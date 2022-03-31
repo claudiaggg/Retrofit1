@@ -1,14 +1,19 @@
 package com.vogella.java.retrofitgerrit;
 
 public class Track {
-    String subject;
+    String title;
+    String author;
 
-    public String getSubject() {
-        return subject;
+    public String getTitle() {
+        return title;
+    }
+    public String getAuthor() {
+        return author;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setTrack(String title , String author) {
+        this.title = title;
+        this.author=author;
     }
 
 }

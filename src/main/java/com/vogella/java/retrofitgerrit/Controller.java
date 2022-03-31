@@ -34,7 +34,7 @@ public class Controller implements Callback<List<Track>>{
     public void onResponse(Call<List<Track>> call, Response<List<Track>> response) {
         if(response.isSuccessful()) {
             List<Track> changesList = response.body();
-            changesList.forEach(change -> System.out.println(change.subject));
+            changesList.forEach(change -> System.out.println(change.title));
         } else {
             System.out.println(response.errorBody());
         }

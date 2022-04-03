@@ -7,6 +7,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface GerritAPI {
-    @GET("changes/")
-    Call<List<Track>> loadChanges(@Query("q") String status);
+    @GET("tracks")
+    Call<List<Track>> findAllTracks()
+
+
 }

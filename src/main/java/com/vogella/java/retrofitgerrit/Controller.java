@@ -44,7 +44,7 @@ public class Controller implements Callback<List<Track>>{
         //});
 
 ////////Funcion encuentra 1 track
-        Call<Track> call2 = tracksAPI.findOne("JvmV3Za84262772");
+        Call<Track> call2 = tracksAPI.findOne("d5313283348");
         call2.enqueue(new Callback<Track>() {
             @Override
             public void onResponse(Call<Track> call, Response<Track> response) {
@@ -56,6 +56,7 @@ public class Controller implements Callback<List<Track>>{
             @Override
             public void onFailure(Call<Track> call, Throwable t) {
                 t.printStackTrace();
+                System.out.println("Ha habido un error encontrando la track");
             }
         });
 
@@ -77,9 +78,47 @@ public class Controller implements Callback<List<Track>>{
 
             @Override
             public void onFailure(Call<Track> call, Throwable t) {
+                System.out.println("Ha habido un error añadiendo la track");
 
             }
         });
+
+        Call<Track> call4 = tracksAPI.deleteTrack("1234");
+        call4.enqueue(new Callback<Track>() {
+            @Override
+            public void onResponse(Call<Track> call, Response<Track> response) {
+                System.out.println("Borrada correctamente");
+
+            }
+
+            @Override
+            public void onFailure(Call<Track> call, Throwable t) {
+                System.out.println("Ha habido un error borrando la track");
+            }
+        });
+
+
+        Track t3 = new Track();
+        t3.setId("12344444");
+        t3.setSinger("fcgvhj");
+        t3.setTitle("cgvhj");
+        Call<Track> call5 = tracksAPI.updateTrack(t3);
+        call5.enqueue(new Callback<Track>() {
+            @Override
+            public void onResponse(Call<Track> call, Response<Track> response) {
+                //Track t= response.body();
+                //System.out.println("Track id: " + t.getId() + " Singer: " + t.getSinger() + " and title: " + t.getTitle() + "has been updated successfuly");
+                System.out.println("Actualizada correctamente");
+
+            }
+
+            @Override
+            public void onFailure(Call<Track> call, Throwable t) {
+                System.out.println("Ha habido un error actualizando la track");
+
+            }
+        });
+
 
     }
 
@@ -99,5 +138,6 @@ public class Controller implements Callback<List<Track>>{
     @Override
     public void onFailure(Call<List<Track>> call, Throwable t) {
         t.printStackTrace();
+        System.out.println("Ha habido un error mostrando todas las tracks");
     }
 }

@@ -3,10 +3,7 @@ package com.vogella.java.retrofitgerrit;
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Path;
+import retrofit2.http.*;
 
 public interface TracksAPI {
     @GET("tracks")
@@ -17,4 +14,10 @@ public interface TracksAPI {
 
     @POST("tracks")
     Call<Track> addTrack(@Body Track t);
+
+    @DELETE("tracks/{id}")
+    Call<Track> deleteTrack(@Path("id") String id);
+
+    @PUT("tracks")
+    Call<Track> updateTrack(@Body Track t);
 }
